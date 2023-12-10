@@ -156,9 +156,9 @@ export const Bot = (props: BotProps & { class?: string }) => {
   };
 
   onMount(() => {
-    console.log('>>>>> BOT.tsx')
-    console.log(props)
-  })
+    console.log('>>>>> BOT.tsx');
+    console.log(props);
+  });
   /**
    * Add each chat message into localStorage
    */

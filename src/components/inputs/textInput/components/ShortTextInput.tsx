@@ -32,16 +32,16 @@ export const ShortTextInput = (props: ShortTextInputProps) => {
       ref={props.ref}
       class="focus:outline-none bg-transparent px-4 py-4 flex-1 w-full text-input disabled:opacity-50 disabled:cursor-not-allowed disabled:brightness-100"
       disabled={props.disabled}
-      style={{ 
-        'font-size': props.fontSize ? `${props.fontSize}px` : '16px', 
+      style={{
+        'font-size': props.fontSize ? `${props.fontSize}px` : '16px',
         resize: 'none',
-        'min-height': '20px',  // height of one line, assuming 20px per line
-        'max-height': '100px',  // height for 4 lines, assuming 20px per line
-        'overflow-y': 'auto'   // allow scrolling
+        'min-height': '20px', // height of one line, assuming 20px per line
+        'max-height': '100px', // height for 4 lines, assuming 20px per line
+        'overflow-y': 'auto', // allow scrolling
       }}
       onInput={(e) => local.onInput(e.currentTarget.value)}
       onKeyDown={handleKeyDown}
-      {...others as any}
+      {...(others as any)}
     />
   );
 };
