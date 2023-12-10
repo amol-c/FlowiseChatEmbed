@@ -4,6 +4,7 @@ export type BubbleParams = {
 export type BubbleTheme = {
     chatWindow?: ChatWindowTheme;
     button?: ButtonTheme;
+    userDidCloseChat?: () => void;
 };
 export type TextInputTheme = {
     backgroundColor?: string;
@@ -36,6 +37,7 @@ export type ChatWindowTheme = {
     textInput?: TextInputTheme;
     poweredByTextColor?: string;
     initialUserInput?: string;
+    userDidCloseChat?: () => void;
 };
 export type ButtonTheme = {
     size?: 'medium' | 'large';

@@ -39,6 +39,7 @@ export type BotProps = {
   fontSize?: number;
   isFullPage?: boolean;
   initialUserInput?: string;
+  userDidCloseChat?: () => void;
 };
 
 const defaultWelcomeMessage = 'Hi there! How can I help?';
@@ -467,15 +468,26 @@ export const Bot = (props: BotProps & { class?: string }) => {
               <span class="px-3 whitespace-pre-wrap font-semibold max-w-full">{props.title}</span>
             </Show>
             <div style={{ flex: 1 }} />
-            <DeleteButton
-              sendButtonColor={props.bubbleTextColor}
-              type="button"
-              isDisabled={messages().length === 1}
-              class="my-2 ml-2"
-              on:click={clearChat}
-            >
-              <span style={{ 'font-family': 'Poppins, sans-serif' }}>Clear</span>
-            </DeleteButton>
+            <div class="flex justify-between items-center w-full">
+              {props.userDidCloseChat && <button
+                type="button"
+                class="my-2 mr-2 text-white font-bold py-2 px-4 rounded"
+                onClick={props.userDidCloseChat}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>}
+              <DeleteButton
+                sendButtonColor={props.bubbleTextColor}
+                type="button"
+                isDisabled={messages().length === 1}
+                class="my-2 ml-2"
+                on:click={clearChat}
+              >
+                <span style={{ 'font-family': 'Poppins, sans-serif' }}>Clear</span>
+              </DeleteButton>
+            </div>
           </div>
           <TextInput
             backgroundColor={props.textInput?.backgroundColor}

@@ -23,6 +23,7 @@ export type BotProps = {
     fontSize?: number;
     isFullPage?: boolean;
     initialUserInput?: string;
+    userDidCloseChat?: () => void;
 };
 export declare const Bot: (props: BotProps & {
     class?: string;

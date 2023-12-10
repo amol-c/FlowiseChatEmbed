@@ -55,8 +55,9 @@ export const Full = (props: FullProps, { element }: { element: HTMLElement }) =>
             chatflowid={props.chatflowid}
             chatflowConfig={props.chatflowConfig}
             apiHost={props.apiHost}
-            isFullPage={true}
+            isFullPage={props.isFullPage}
             initialUserInput={props.theme?.chatWindow?.initialUserInput}
+            userDidCloseChat={props.theme?.chatWindow?.userDidCloseChat}
           />
         </div>
       </Show>
