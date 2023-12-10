@@ -33,7 +33,7 @@ export const TextInput = (props: Props) => {
   const submitWhenEnter = (e: KeyboardEvent) => {
     // Check if IME composition is in progress
     const isIMEComposition = e.isComposing || e.keyCode === 229;
-    if (e.key === 'Enter' && !isIMEComposition) submit();
+    if (e.key === 'Enter' && !(e.altKey || e.shiftKey) && !isIMEComposition) submit();
   };
 
   createEffect(() => {

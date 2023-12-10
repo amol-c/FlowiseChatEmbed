@@ -38,6 +38,7 @@ export type BotProps = {
   titleAvatarSrc?: string;
   fontSize?: number;
   isFullPage?: boolean;
+  initialUserInput?: string;
 };
 
 const defaultWelcomeMessage = 'Hi there! How can I help?';
@@ -124,7 +125,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
   let bottomSpacer: HTMLDivElement | undefined;
   let botContainer: HTMLDivElement | undefined;
 
-  const [userInput, setUserInput] = createSignal('');
+  const [userInput, setUserInput] = createSignal(props.initialUserInput ?? '');
   const [loading, setLoading] = createSignal(false);
   const [sourcePopupOpen, setSourcePopupOpen] = createSignal(false);
   const [sourcePopupSrc, setSourcePopupSrc] = createSignal({});
@@ -154,6 +155,10 @@ export const Bot = (props: BotProps & { class?: string }) => {
     }, 50);
   };
 
+  onMount(() => {
+    console.log('>>>>> BOT.tsx')
+    console.log(props)
+  })
   /**
    * Add each chat message into localStorage
    */
@@ -381,7 +386,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
       >
         <div class="flex w-full h-full justify-center">
           <div
-            style={{ 'padding-bottom': '100px', 'padding-top': '70px' }}
+            style={{ 'padding-bottom': '200px', 'padding-top': '70px' }}
             ref={chatContainer}
             class="overflow-y-scroll min-w-full w-full min-h-full px-3 pt-10 relative scrollable-container chatbot-chat-view scroll-smooth"
           >
